@@ -1,12 +1,11 @@
 package Vista;
 
 import javax.swing.*;
-import javax.swing.table.TableModel;
 
 public class PantallaPrincipal extends JFrame{
 
     private JPanel empleado;
-    public PantallaPrincipal(TableModel empleados) {
+    public PantallaPrincipal(EmpleadoV empleados) {
 
         // Create and set up the window.
         super("Laboratorio3");
@@ -20,9 +19,9 @@ public class PantallaPrincipal extends JFrame{
 
 
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-
+        EmpleadoV emp = empleados;
         // add tab with title
-       tabbedPane.addTab("Empleado", new EmpleadoV(empleados));
+       tabbedPane.addTab("Empleado", emp);
 
         // add tab with title and icon
         Icon icon = new ImageIcon("icon.gif");

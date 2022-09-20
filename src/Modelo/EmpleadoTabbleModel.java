@@ -13,12 +13,16 @@ public class EmpleadoTabbleModel implements TableModel {
     private int numeroEmpleados;
     private LinkedList Listen;
 
-    public EmpleadoTabbleModel() {
-        this.ListaDeEmpleados = new HashMap<Integer, Empleado>();
+    public EmpleadoTabbleModel( HashMap<Integer, Empleado> emp) {
+        this.ListaDeEmpleados = emp;
         this.numeroEmpleados = 0;
         this.Listen = new LinkedList();
     }
-
+    public EmpleadoTabbleModel() {
+        this.ListaDeEmpleados = new HashMap<Integer, Empleado>();
+        this.numeroEmpleados = this.ListaDeEmpleados.size();
+        this.Listen = new LinkedList();
+    }
 
     @Override
     public int getRowCount() {
@@ -140,7 +144,7 @@ public class EmpleadoTabbleModel implements TableModel {
     public void addEmpleado(Empleado em){
             ListaDeEmpleados.put(this.numeroEmpleados++,em);
             TableModelEvent e= new TableModelEvent(this,this.getColumnCount()-1,this.getColumnCount()-1,TableModelEvent.ALL_COLUMNS,TableModelEvent.INSERT);
-
+            this.Listen.add(e);
 
     }
 

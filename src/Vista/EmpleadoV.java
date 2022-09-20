@@ -1,16 +1,44 @@
 package Vista;
 
 import Controlador.Controlador;
+import Modelo.EmpleadoTabbleModel;
 
 import javax.swing.*;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EmpleadoV extends JPanel {
+    private JTable table;
 
-    public EmpleadoV(TableModel model){
+    public JTable getTable() {
+        return table;
+    }
+
+    public void setTable(JTable table) {
+        this.table = table;
+    }
+
+    public EmpleadoTabbleModel getModel() {
+        return model;
+    }
+
+    public void setModel(EmpleadoTabbleModel model) {
+        this.model = model;
+    }
+
+    private EmpleadoTabbleModel model;
+    public JButton getAdd() {
+        return add;
+    }
+
+    public void setAdd(JButton add) {
+        this.add = add;
+    }
+
+    private JButton add;
+    public EmpleadoV(){
+        model = new EmpleadoTabbleModel();
         JPanel datos = new JPanel();
         datos.add(new JLabel("Nombre"));
         JTextField text = new JTextField();
@@ -19,7 +47,7 @@ public class EmpleadoV extends JPanel {
         JButton search = new JButton("Buscar");
         datos.add(search);
 
-        JButton add = new JButton("Agregar");
+         add = new JButton("Agregar");
         datos.add(add);
         JButton edit = new JButton("Editar");
         datos.add(edit);
@@ -27,7 +55,7 @@ public class EmpleadoV extends JPanel {
         datos.add(save);
         datos.setLayout(new GridLayout(2,3));
         this.setLayout(new BorderLayout());
-        JTable table = new JTable(model);
+        table = new JTable(this.model);
         this.add(datos,BorderLayout.NORTH);
         this.add(new JScrollPane(table), BorderLayout.CENTER);
         search.addActionListener(new ActionListener(){
